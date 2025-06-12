@@ -1,0 +1,12 @@
+E:\App\DemExamen52Bratuxa\ClassLibrary\bin\Debug\ClassLibrary.dll.config
+E:\App\DemExamen52Bratuxa\ClassLibrary\bin\Debug\ClassLibrary.dll
+E:\App\DemExamen52Bratuxa\ClassLibrary\bin\Debug\ClassLibrary.pdb
+E:\App\DemExamen52Bratuxa\ClassLibrary\bin\Debug\EntityFramework.dll
+E:\App\DemExamen52Bratuxa\ClassLibrary\bin\Debug\EntityFramework.SqlServer.dll
+E:\App\DemExamen52Bratuxa\ClassLibrary\bin\Debug\EntityFramework.xml
+E:\App\DemExamen52Bratuxa\ClassLibrary\bin\Debug\EntityFramework.SqlServer.xml
+E:\App\DemExamen52Bratuxa\ClassLibrary\obj\Debug\ClassLibrary.csproj.AssemblyReference.cache
+E:\App\DemExamen52Bratuxa\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+E:\App\DemExamen52Bratuxa\ClassLibrary\obj\Debug\ClassLibrary.csproj.CopyComplete
+E:\App\DemExamen52Bratuxa\ClassLibrary\obj\Debug\ClassLibrary.dll
+E:\App\DemExamen52Bratuxa\ClassLibrary\obj\Debug\ClassLibrary.pdb

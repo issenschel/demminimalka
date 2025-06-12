@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DemExamen12BDModelContainer" CdmEntityContainer="DemExamen12BDEntities">
+    <EntitySetMapping Name="Partner">
+      <EntityTypeMapping TypeName="DemExamen12BDModel.Partner">
+        <MappingFragment StoreEntitySet="Partner">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="typeOfPartnerId" ColumnName="typeOfPartnerId" />
+          <ScalarProperty Name="legalAddress" ColumnName="legalAddress" />
+          <ScalarProperty Name="tin" ColumnName="tin" />
+          <ScalarProperty Name="director" ColumnName="director" />
+          <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="rating" ColumnName="rating" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartnerSaleHistory">
+      <EntityTypeMapping TypeName="DemExamen12BDModel.PartnerSaleHistory">
+        <MappingFragment StoreEntitySet="PartnerSaleHistory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="partnerId" ColumnName="partnerId" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="saleDate" ColumnName="saleDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="DemExamen12BDModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="typeOfProductId" ColumnName="typeOfProductId" />
+          <ScalarProperty Name="articul" ColumnName="articul" />
+          <ScalarProperty Name="minimumCost" ColumnName="minimumCost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="typeOfMaterial">
+      <EntityTypeMapping TypeName="DemExamen12BDModel.typeOfMaterial">
+        <MappingFragment StoreEntitySet="typeOfMaterial">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="percentageOfMarriage" ColumnName="percentageOfMarriage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfPartner">
+      <EntityTypeMapping TypeName="DemExamen12BDModel.TypeOfPartner">
+        <MappingFragment StoreEntitySet="TypeOfPartner">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeOfProduct">
+      <EntityTypeMapping TypeName="DemExamen12BDModel.TypeOfProduct">
+        <MappingFragment StoreEntitySet="TypeOfProduct">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="ratio" ColumnName="ratio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

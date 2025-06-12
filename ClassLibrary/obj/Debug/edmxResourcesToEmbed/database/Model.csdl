@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DemExamen12BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Partner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="typeOfPartnerId" Type="Int32" Nullable="false" />
+    <Property Name="legalAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="tin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="director" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phoneNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="rating" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TypeOfPartner" Relationship="Self.FK__Partner__typeOfP__398D8EEE" FromRole="Partner" ToRole="TypeOfPartner" />
+    <NavigationProperty Name="PartnerSaleHistory" Relationship="Self.FK__PartnerSa__partn__4316F928" FromRole="Partner" ToRole="PartnerSaleHistory" />
+  </EntityType>
+  <EntityType Name="PartnerSaleHistory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productId" Type="Int32" Nullable="false" />
+    <Property Name="partnerId" Type="Int32" Nullable="false" />
+    <Property Name="quantity" Type="Int32" Nullable="false" />
+    <Property Name="saleDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Partner" Relationship="Self.FK__PartnerSa__partn__4316F928" FromRole="PartnerSaleHistory" ToRole="Partner" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__PartnerSa__produ__440B1D61" FromRole="PartnerSaleHistory" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="typeOfProductId" Type="Int32" Nullable="false" />
+    <Property Name="articul" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="minimumCost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="PartnerSaleHistory" Relationship="Self.FK__PartnerSa__produ__440B1D61" FromRole="Product" ToRole="PartnerSaleHistory" />
+    <NavigationProperty Name="TypeOfProduct" Relationship="Self.FK__Product__typeOfP__3E52440B" FromRole="Product" ToRole="TypeOfProduct" />
+  </EntityType>
+  <EntityType Name="typeOfMaterial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="percentageOfMarriage" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TypeOfPartner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Partner" Relationship="Self.FK__Partner__typeOfP__398D8EEE" FromRole="TypeOfPartner" ToRole="Partner" />
+  </EntityType>
+  <EntityType Name="TypeOfProduct">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ratio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__Product__typeOfP__3E52440B" FromRole="TypeOfProduct" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK__Partner__typeOfP__398D8EEE">
+    <End Role="TypeOfPartner" Type="Self.TypeOfPartner" Multiplicity="1" />
+    <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfPartner">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Partner">
+        <PropertyRef Name="typeOfPartnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PartnerSa__partn__4316F928">
+    <End Role="Partner" Type="Self.Partner" Multiplicity="1" />
+    <End Role="PartnerSaleHistory" Type="Self.PartnerSaleHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partner">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PartnerSaleHistory">
+        <PropertyRef Name="partnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PartnerSa__produ__440B1D61">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="PartnerSaleHistory" Type="Self.PartnerSaleHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="PartnerSaleHistory">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__typeOfP__3E52440B">
+    <End Role="TypeOfProduct" Type="Self.TypeOfProduct" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeOfProduct">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="typeOfProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DemExamen12BDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Partner" EntityType="Self.Partner" />
+    <EntitySet Name="PartnerSaleHistory" EntityType="Self.PartnerSaleHistory" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="typeOfMaterial" EntityType="Self.typeOfMaterial" />
+    <EntitySet Name="TypeOfPartner" EntityType="Self.TypeOfPartner" />
+    <EntitySet Name="TypeOfProduct" EntityType="Self.TypeOfProduct" />
+    <AssociationSet Name="FK__Partner__typeOfP__398D8EEE" Association="Self.FK__Partner__typeOfP__398D8EEE">
+      <End Role="TypeOfPartner" EntitySet="TypeOfPartner" />
+      <End Role="Partner" EntitySet="Partner" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PartnerSa__partn__4316F928" Association="Self.FK__PartnerSa__partn__4316F928">
+      <End Role="Partner" EntitySet="Partner" />
+      <End Role="PartnerSaleHistory" EntitySet="PartnerSaleHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PartnerSa__produ__440B1D61" Association="Self.FK__PartnerSa__produ__440B1D61">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="PartnerSaleHistory" EntitySet="PartnerSaleHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__typeOfP__3E52440B" Association="Self.FK__Product__typeOfP__3E52440B">
+      <End Role="TypeOfProduct" EntitySet="TypeOfProduct" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

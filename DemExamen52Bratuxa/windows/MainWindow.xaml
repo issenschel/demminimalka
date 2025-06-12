@@ -1,0 +1,15 @@
+﻿<Window x:Class="DemExamen52Bratuxa.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemExamen52Bratuxa"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="PartnerHistoryButton" Content="История партнеров" HorizontalAlignment="Left" Margin="114,229,0,0" VerticalAlignment="Top" Height="60" Width="141" Click="PartnerHistoryButton_Click"/>
+        <Button x:Name="PartnerButton" Content="Партнеры" HorizontalAlignment="Left"  Margin="594,229,0,0" VerticalAlignment="Top" Height="60" Width="124" Click="PartnerButton_Click"/>
+        <Image Margin="10,10,658,312" Source="/windows/image/Мастер пол.png" Stretch="Fill" RenderTransformOrigin="0.88,-2.155"/>
+
+    </Grid>
+</Window>

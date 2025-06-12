@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище DemExamen12BDModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="typeOfPartnerId" Type="int" Nullable="false" />
+          <Property Name="legalAddress" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="tin" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="director" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="phoneNumber" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="rating" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PartnerSaleHistory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productId" Type="int" Nullable="false" />
+          <Property Name="partnerId" Type="int" Nullable="false" />
+          <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="saleDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="typeOfProductId" Type="int" Nullable="false" />
+          <Property Name="articul" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="minimumCost" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="typeOfMaterial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="percentageOfMarriage" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfPartner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ratio" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Partner__typeOfP__398D8EEE">
+          <End Role="TypeOfPartner" Type="Self.TypeOfPartner" Multiplicity="1" />
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfPartner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="typeOfPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PartnerSa__partn__4316F928">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1" />
+          <End Role="PartnerSaleHistory" Type="Self.PartnerSaleHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartnerSaleHistory">
+              <PropertyRef Name="partnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PartnerSa__produ__440B1D61">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PartnerSaleHistory" Type="Self.PartnerSaleHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartnerSaleHistory">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__typeOfP__3E52440B">
+          <End Role="TypeOfProduct" Type="Self.TypeOfProduct" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfProduct">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="typeOfProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище DemExamen12BDModelContainer">
+          <EntitySet Name="Partner" EntityType="Self.Partner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PartnerSaleHistory" EntityType="Self.PartnerSaleHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="typeOfMaterial" EntityType="Self.typeOfMaterial" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfPartner" EntityType="Self.TypeOfPartner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeOfProduct" EntityType="Self.TypeOfProduct" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Partner__typeOfP__398D8EEE" Association="Self.FK__Partner__typeOfP__398D8EEE">
+            <End Role="TypeOfPartner" EntitySet="TypeOfPartner" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PartnerSa__partn__4316F928" Association="Self.FK__PartnerSa__partn__4316F928">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="PartnerSaleHistory" EntitySet="PartnerSaleHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PartnerSa__produ__440B1D61" Association="Self.FK__PartnerSa__produ__440B1D61">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PartnerSaleHistory" EntitySet="PartnerSaleHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__typeOfP__3E52440B" Association="Self.FK__Product__typeOfP__3E52440B">
+            <End Role="TypeOfProduct" EntitySet="TypeOfProduct" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DemExamen12BDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Partner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="typeOfPartnerId" Type="Int32" Nullable="false" />
+          <Property Name="legalAddress" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="tin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="director" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="phoneNumber" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="rating" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TypeOfPartner" Relationship="Self.FK__Partner__typeOfP__398D8EEE" FromRole="Partner" ToRole="TypeOfPartner" />
+          <NavigationProperty Name="PartnerSaleHistory" Relationship="Self.FK__PartnerSa__partn__4316F928" FromRole="Partner" ToRole="PartnerSaleHistory" />
+        </EntityType>
+        <EntityType Name="PartnerSaleHistory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productId" Type="Int32" Nullable="false" />
+          <Property Name="partnerId" Type="Int32" Nullable="false" />
+          <Property Name="quantity" Type="Int32" Nullable="false" />
+          <Property Name="saleDate" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Partner" Relationship="Self.FK__PartnerSa__partn__4316F928" FromRole="PartnerSaleHistory" ToRole="Partner" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__PartnerSa__produ__440B1D61" FromRole="PartnerSaleHistory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="typeOfProductId" Type="Int32" Nullable="false" />
+          <Property Name="articul" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="minimumCost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="PartnerSaleHistory" Relationship="Self.FK__PartnerSa__produ__440B1D61" FromRole="Product" ToRole="PartnerSaleHistory" />
+          <NavigationProperty Name="TypeOfProduct" Relationship="Self.FK__Product__typeOfP__3E52440B" FromRole="Product" ToRole="TypeOfProduct" />
+        </EntityType>
+        <EntityType Name="typeOfMaterial">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="percentageOfMarriage" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeOfPartner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Partner" Relationship="Self.FK__Partner__typeOfP__398D8EEE" FromRole="TypeOfPartner" ToRole="Partner" />
+        </EntityType>
+        <EntityType Name="TypeOfProduct">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ratio" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__typeOfP__3E52440B" FromRole="TypeOfProduct" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Partner__typeOfP__398D8EEE">
+          <End Role="TypeOfPartner" Type="Self.TypeOfPartner" Multiplicity="1" />
+          <End Role="Partner" Type="Self.Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfPartner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partner">
+              <PropertyRef Name="typeOfPartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PartnerSa__partn__4316F928">
+          <End Role="Partner" Type="Self.Partner" Multiplicity="1" />
+          <End Role="PartnerSaleHistory" Type="Self.PartnerSaleHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Partner">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartnerSaleHistory">
+              <PropertyRef Name="partnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PartnerSa__produ__440B1D61">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="PartnerSaleHistory" Type="Self.PartnerSaleHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PartnerSaleHistory">
+              <PropertyRef Name="productId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__typeOfP__3E52440B">
+          <End Role="TypeOfProduct" Type="Self.TypeOfProduct" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeOfProduct">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="typeOfProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DemExamen12BDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Partner" EntityType="Self.Partner" />
+          <EntitySet Name="PartnerSaleHistory" EntityType="Self.PartnerSaleHistory" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="typeOfMaterial" EntityType="Self.typeOfMaterial" />
+          <EntitySet Name="TypeOfPartner" EntityType="Self.TypeOfPartner" />
+          <EntitySet Name="TypeOfProduct" EntityType="Self.TypeOfProduct" />
+          <AssociationSet Name="FK__Partner__typeOfP__398D8EEE" Association="Self.FK__Partner__typeOfP__398D8EEE">
+            <End Role="TypeOfPartner" EntitySet="TypeOfPartner" />
+            <End Role="Partner" EntitySet="Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PartnerSa__partn__4316F928" Association="Self.FK__PartnerSa__partn__4316F928">
+            <End Role="Partner" EntitySet="Partner" />
+            <End Role="PartnerSaleHistory" EntitySet="PartnerSaleHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PartnerSa__produ__440B1D61" Association="Self.FK__PartnerSa__produ__440B1D61">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="PartnerSaleHistory" EntitySet="PartnerSaleHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__typeOfP__3E52440B" Association="Self.FK__Product__typeOfP__3E52440B">
+            <End Role="TypeOfProduct" EntitySet="TypeOfProduct" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DemExamen12BDModelContainer" CdmEntityContainer="DemExamen12BDEntities">
+          <EntitySetMapping Name="Partner">
+            <EntityTypeMapping TypeName="DemExamen12BDModel.Partner">
+              <MappingFragment StoreEntitySet="Partner">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="typeOfPartnerId" ColumnName="typeOfPartnerId" />
+                <ScalarProperty Name="legalAddress" ColumnName="legalAddress" />
+                <ScalarProperty Name="tin" ColumnName="tin" />
+                <ScalarProperty Name="director" ColumnName="director" />
+                <ScalarProperty Name="phoneNumber" ColumnName="phoneNumber" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PartnerSaleHistory">
+            <EntityTypeMapping TypeName="DemExamen12BDModel.PartnerSaleHistory">
+              <MappingFragment StoreEntitySet="PartnerSaleHistory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="partnerId" ColumnName="partnerId" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="saleDate" ColumnName="saleDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="DemExamen12BDModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="typeOfProductId" ColumnName="typeOfProductId" />
+                <ScalarProperty Name="articul" ColumnName="articul" />
+                <ScalarProperty Name="minimumCost" ColumnName="minimumCost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="typeOfMaterial">
+            <EntityTypeMapping TypeName="DemExamen12BDModel.typeOfMaterial">
+              <MappingFragment StoreEntitySet="typeOfMaterial">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="percentageOfMarriage" ColumnName="percentageOfMarriage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfPartner">
+            <EntityTypeMapping TypeName="DemExamen12BDModel.TypeOfPartner">
+              <MappingFragment StoreEntitySet="TypeOfPartner">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeOfProduct">
+            <EntityTypeMapping TypeName="DemExamen12BDModel.TypeOfProduct">
+              <MappingFragment StoreEntitySet="TypeOfProduct">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="ratio" ColumnName="ratio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

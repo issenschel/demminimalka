@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6a9f16e22b9b407283bb1f5c141678b2" Name="Diagram1">
+        <EntityTypeShape EntityType="DemExamen12BDModel.Partner" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemExamen12BDModel.PartnerSaleHistory" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemExamen12BDModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemExamen12BDModel.typeOfMaterial" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemExamen12BDModel.TypeOfPartner" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DemExamen12BDModel.TypeOfProduct" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="DemExamen12BDModel.FK__Partner__typeOfP__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="DemExamen12BDModel.FK__PartnerSa__partn__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="DemExamen12BDModel.FK__PartnerSa__produ__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="DemExamen12BDModel.FK__Product__typeOfP__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

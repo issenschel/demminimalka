@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemExamen52Bratuxa", "DemExamen52Bratuxa\DemExamen52Bratuxa.csproj", "{8053AACF-86BB-434D-92DC-F3ACD79F6592}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{FB33F888-DE4F-4F47-8A16-6F34D912728C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8053AACF-86BB-434D-92DC-F3ACD79F6592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8053AACF-86BB-434D-92DC-F3ACD79F6592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8053AACF-86BB-434D-92DC-F3ACD79F6592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8053AACF-86BB-434D-92DC-F3ACD79F6592}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB33F888-DE4F-4F47-8A16-6F34D912728C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB33F888-DE4F-4F47-8A16-6F34D912728C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB33F888-DE4F-4F47-8A16-6F34D912728C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB33F888-DE4F-4F47-8A16-6F34D912728C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EDB98DF0-3ED9-4599-B073-4B8C72A542CD}
+	EndGlobalSection
+EndGlobal
